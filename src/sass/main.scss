@@ -1,0 +1,376 @@
+/*
+  STYLES FOR SELECTED TEXT
+*/
+p, h1, h2, h3 {
+  &::selection {
+    background-color: #ffeca4;
+    color: inherit;
+  }
+}
+
+
+.code::selection {
+  background-color: whitesmoke;
+  color: lighten(red, 15);
+}
+/**/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-primary: #ffdd57;
+  --color-secondary: #ffdd57;
+  --navbar-slider-position: 0%;
+}
+
+body {
+  background-color: #fdfdfd;
+  overflow-x: hidden;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 100px repeat(10, 1fr) 100px;
+}
+
+.logo {
+  height: 40px;
+  fill: var(--color-secondary);
+}
+
+.navbar {
+  height: 60px; // temporary
+  grid-column: 1 / 13;
+  position: relative;
+  background-color: #fafafa;
+  box-shadow: 0 2px 4px rgba(0,0,0,.1);
+
+  display: grid;
+  grid-template-columns: 100px repeat(2, 1fr) 100px;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    width: 100%;
+    transition: transform .3s ease-in-out;
+  }
+
+  &::before {
+    transform: translateX(var(--navbar-slider-position));
+    background-color: var(--color-primary);
+  }
+
+  &::after {
+    transform: translateX(calc(var(--navbar-slider-position) - 100%));
+    background-color: var(--color-secondary);
+  }
+
+  &__header {
+    grid-column-start: 2;
+
+    display: flex;
+    align-items: center;
+  }
+
+  &__menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+  }
+
+  &__item {
+    padding: 0 1rem;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: #333;
+
+    &:hover,
+    &--is-active {
+      color: var(--color-secondary);
+    }
+  }
+}
+
+.main {
+  grid-column: 2 / 12;
+
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  padding: 2rem 0;
+}
+
+.sidebar {
+  grid-column: 1 / 4;
+
+  width: 300%; // to fit the three menus in one row
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: minmax(min-content, 20rem);
+
+  contain: content;
+  transform: translateX(var(--sidemenu-position));
+  transition: transform .2s ease-in-out;
+
+  --sidemenu-position: -66%;
+  --submenu-1: 0;
+  --submenu-2: 0;
+  --submenu-3: 0;
+
+  &--is-visible-1 {
+    --submenu-1: 1;
+  }
+
+  &--is-visible-2 {
+    --submenu-2: 1;
+  }
+
+  &--is-visible-3 {
+    --submenu-3: 1;
+  }
+
+
+  &__menu,
+  &__menu--template,
+  &__menu--template-article {
+    grid-row: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: center;
+    list-style: none;
+
+    // hide menu under document when sliding
+    position: relative;
+    z-index: -10;
+
+    width: 80%;
+    transition: opacity .1s ease;
+  }
+
+  &__menu {
+    grid-column: 3 / 4;
+    position: relative;
+    opacity: var(--submenu-1);
+    z-index: -10;
+  }
+
+  &__menu--template {
+    grid-column: 2 / 3;
+    opacity: var(--submenu-2);
+  }
+
+  &__menu--template-article {
+    grid-column: 1 / 2;
+    opacity: var(--submenu-3);
+  }
+
+  &__item {
+    margin: 1rem 0;
+  }
+
+  &__link {
+    background: none;
+    width: 60%;
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    color: #666;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      color: black;
+    }
+  }
+}
+
+.doc {
+  grid-column: 4 / 13;
+
+  // this makes sure the document stays on top of the slide menu always
+  position: relative;
+  z-index: 10;
+}
+
+.article {
+  padding: 2rem 3rem;
+  background-color: #fefefe;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, .1);
+}
+
+/*
+TYPOGRAPHY STYLES!
+*/
+
+body {
+  font-family: "Nunito", 'sans-serif';
+  line-height: 1.4;
+}
+
+.title, .subtitle, .section-heading {
+  font-family: 'Roboto', 'sans-serif';
+  color: #333;
+}
+
+.title {
+  font-size: 2.5em;
+  margin: 1rem 0;
+}
+
+.subtitle {
+  font-size: 2em;
+  margin: 1rem 0;
+}
+
+.section-heading {
+  font-size: 1.5em;
+  // font-weight: 500;
+  margin: 1rem 1rem 1rem 2rem;
+}
+
+.text {
+  font-size: 1.15em;
+  line-height: 1.5;
+  margin-bottom: 1.6rem;
+  color: #343434;
+
+  /* Sliding background for single line code snippets */
+
+  code {
+    background: var(--color-primary);
+    font-size: 1.15em;
+    padding: 0.25em;
+    border-radius: 3px;
+    position: relative;
+
+    overflow: hidden;
+    z-index: 9; // allows ::before to sit under the text
+    display: inline-flex; // allows overflow hidden to work, without disrupting text (which inline-block did).
+
+    &::before {
+      content: '';
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(calc(var(--navbar-slider-position) - 100%));
+      transition: transform .175s ease-in-out;
+      background-color: var(--color-secondary);
+      z-index: -1;
+    }
+  }
+}
+/**/
+
+/* TOP SEARCH FORM */
+
+.form {
+  align-self: center;
+  grid-column-start: 3;
+
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+
+  &:hover &__input--reset {
+    max-height: 100%;
+    visibility: visible;
+    background: none;
+  }
+
+  &:hover &__submit-btn {
+    background-color: #333;
+    fill: #f7f7f7;
+
+    &:hover {
+      background-color: var(--color-secondary);
+    }
+
+    &:focus {
+      background-color: var(--color-secondary);
+    }
+  }
+
+  &__label,
+  &__input--reset {
+    max-height: 0;
+    visibility: hidden;
+  }
+
+  &__input {
+    width: 400px;
+    padding: .4rem;
+    margin-right: -2.2rem;
+    border: 1px solid #999;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(10,10,10,.1);
+
+		&:focus ~ .form__submit-btn {
+      background-color: #333;
+			fill: #f7f7f7;
+    }
+  }
+
+  &__input--reset {
+    position: absolute;
+    top: 50%;
+    right: 2rem;
+    transform: translateY(-52%);
+    height: 100%;
+    padding: 0 1rem;
+    border: none;
+    color: #777;
+    transform-origin: center;
+    transition: transform .2s linear;
+
+    &:hover {
+      color: #333;
+      cursor: pointer;
+    }
+
+    &:focus,
+    &:active {
+      outline: none;
+    }
+  }
+
+  &__submit-btn {
+    background: none;
+    border: none;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    cursor: pointer;
+    padding: 0 .4rem;
+    fill: #777;
+
+    &:focus,
+    &:active {
+      background-color: var(--color-secondary);
+    }
+  }
+
+  &__icon {
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+}
+
+.footer {
+  grid-column: 2 / 12;
+  justify-self: center;
+}

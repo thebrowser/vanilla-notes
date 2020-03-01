@@ -1,0 +1,28 @@
+{
+  "name": "draft",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "presass": "node-sass src/sass/main.scss -o dist/styles",
+    "sass": "node-sass src/sass/main.scss -o dist/styles -w",
+    "server": "live-server dist/ --browser=firefox",
+    "babel": "babel src/scripts/index.js -o public/scripts/main.js --presets env",
+    "dev-server": "webpack-dev-server --mode development",
+    "build": "webpack --mode production"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "babel-loader": "^8.0.6",
+    "babel-polyfill": "^6.26.0",
+    "live-server": "^1.2.1",
+    "node-sass": "^4.13.1",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  }
+}

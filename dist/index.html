@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles/main.css">
+    <script type="text/javascript" src="scripts/bundle.js" defer></script>
+    <title>Miniwiki Docs</title>
+  </head>
+  <template id="template__element">
+    <ul class="sidebar__menu--template" id="template__menu"></ul>
+  </template>
+  <body class="grid" data-color="#ffdd57">
+    <nav class="navbar">
+      <header class="navbar__header">
+        <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 74.13923972334896 60">
+          <g transform="matrix(0.8244930505752563,0,0,0.8244930505752563,-4.155442714691162,-11.224649429321289)" stroke="none">
+            <path d="M59.068 58.977l-7.232-1.746-.633.437 5.225 13.17-10.657 9.337.429.793 7.212 1.742 11.184-9.799z"></path>
+            <path d="M59.068 58.977l-7.232-1.746-.633.437 5.225 13.17-10.657 9.337.429.793 7.212 1.742 11.184-9.799z"></path>
+            <path d="M74.76 62.652l-7.231-1.745-.009.006-.885-.214 5.486 13.814-10.656 9.338.012.022-.635.559 1.053.214 5.808 1.402 1.401.338L80.141 76.35zM45.73 61.428l-7.348 5.053 4.233 7.845 6.11-5.35z"></path>
+            <path d="M45.73 61.428l-7.348 5.053 4.233 7.845 6.11-5.35z"></path>
+            <path d="M45.73 61.428l-7.348 5.053 4.233 7.845 6.11-5.35z"></path>
+            <path d="M45.73 61.428l-7.348 5.053 4.233 7.845 6.11-5.35zM54.445 22.237l3.738 6.533-4.38 18.74-5.456 3.666-3.758-9.301 3.61-15.438 6.246-4.2m2.018-8.623l-13.598 9.139-4.585 19.61 7.261 17.969 13.596-9.141 5.459-23.358-8.133-14.219zM25.88 73.909l-10.826-2.178-.345-13.985 11.407-7.883 11.17 3.081v13.082zM25.068 49.822l-3.395-10.68-5.434-5.381.146-2.371-2.298-1.844-2.457.706-.157 2.552 2.298 1.844 1.777-.511 5.463 5.41 2.604 8.191-6.33-4.92-7.671-1.116-.971-1.332-2.419.036L5.04 42.14l1.236 1.696 2.419-.037.912-1.335 7.373 1.072zM81.395 78.08l13.566 4.019-13.039-7.061.644 1.885z"></path>
+          </g></svg>
+        <ul class="navbar__menu">
+          <li class="navbar__item"><a class="navbar__link" href="#">Home</a></li>
+          <li class="navbar__item"><a class="navbar__link navbar__link--is-active" href="#">Docs</a></li>
+          <li class="navbar__item"><a class="navbar__link" href="#">About</a></li>
+        </ul>
+      </header>
+      <form class="form">
+        <label class="form__label" for="search-field">Search Field</label>
+        <input class="form__input" id="search-field" name="search-field" type="text">
+        <button class="form__input--reset" type="reset" name="button">X</button>
+        <button class="form__submit-btn" type="submit" name="button">
+          <svg class="form__icon">
+            <use xlink:href="img/sprite.svg#icon-magnifying-glass"></use>
+          </svg>
+        </button>
+      </form>
+    </nav>
+
+    <main class="main">
+      <nav class="sidebar sidebar--is-visible-1">
+        <ul class="sidebar__menu sidebar__menu--is-visible">
+          <button data-section="table-contents" class="sidebar__contents">Table of Contents</button>
+          <!-- <li class="sidebar__item"><button class="sidebar__link table-contents" data-section="table-contents">Table of Contents</button></li> -->
+          <li class="sidebar__item"><button class="sidebar__link" data-section="html"       data-color="coral">HTML</button></li>
+          <li class="sidebar__item"><button class="sidebar__link" data-section="css"        data-color="royalblue">CSS</button></li>
+          <li class="sidebar__item"><button class="sidebar__link" data-section="javascript" data-color="hotpink">JavaScript</button></li>
+          <li class="sidebar__item"><button class="sidebar__link" data-section="wordpress"  data-color="slateblue">Wordpress</button></li>
+        </ul>
+        <ul id="sidebar__sections" class="sidebar__menu--template"></ul>
+        <ul id="sidebar__articles" class="sidebar__menu--template-article"></ul>
+      </nav>
+      <section class="doc">
+        <article class="article">
+          <h1 class="title">What Is Lorem Ipsum?</h1>
+          <p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea <code class="code">commodo consequat</code>. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p class="text">Lorem ipsum dolor sit amet, <code class="code">consectetur adipisicing</code> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <h2 class="subtitle">Ipsum Dolor</h2>
+          <p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis <code class="code">nostrud exercitation</code> ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+          <h2 class="subtitle">I don't speak latin!</h2>
+          <p class="text">Lorem Ipsum is dummy text</p>
+          <h3 class="section-heading">And this is what a pre-formatted code looks like</h3>
+          <pre><code>This is some code wrapped on pre tags</code></pre>
+          <p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </article>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>Footer section</p>
+      </div>
+    </footer>
+  </body>
+</html>
