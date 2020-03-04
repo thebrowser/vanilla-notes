@@ -15,6 +15,7 @@ class Dispatcher {
       break
       case actionTypes.SLIDE_FORWARD:
       case actionTypes.SLIDE_BACK:
+      case actionTypes.RESET_MENU:
         document.dispatchEvent(new CustomEvent('newSidemenu', { detail: action.payload }))
       break
       case actionTypes.FETCH_TEMPLATE:

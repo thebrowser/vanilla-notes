@@ -83,7 +83,6 @@ body {
   width: 300%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: minmax(min-content, 20rem);
   contain: content;
   transform: translateX(var(--sidemenu-position));
   transition: transform .2s ease-in-out;
@@ -98,15 +97,13 @@ body {
   .sidebar--is-visible-3 {
     --submenu-3: 1; }
   .sidebar__menu, .sidebar__menu--template, .sidebar__menu--template-article {
-    grid-row: 1;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    text-align: center;
     list-style: none;
     position: relative;
+    grid-row: 1;
     z-index: -10;
-    width: 80%;
     transition: opacity .1s ease; }
   .sidebar__menu {
     grid-column: 3 / 4;
@@ -120,10 +117,9 @@ body {
     grid-column: 1 / 2;
     opacity: var(--submenu-3); }
   .sidebar__item {
-    margin: 1rem 0; }
+    margin: 1rem; }
   .sidebar__link {
     background: none;
-    width: 60%;
     border: none;
     font-family: inherit;
     font-size: inherit;
@@ -131,10 +127,32 @@ body {
     cursor: pointer; }
     .sidebar__link:hover, .sidebar__link:focus {
       color: black; }
+  .sidebar__title {
+    text-align: right;
+    padding-bottom: 1rem;
+    width: 80%;
+    position: relative; }
+    .sidebar__title::before {
+      content: '';
+      height: 2px;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background-color: var(--color-secondary);
+      opacity: .2; }
+  .sidebar__title--text {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    color: #7a7a7a;
+    cursor: pointer;
+    text-transform: uppercase; }
+    .sidebar__title--text:hover {
+      color: #333; }
 
 .doc {
   grid-column: 4 / 13;
-  position: relative;
   z-index: 10; }
 
 .article {
@@ -262,7 +280,5 @@ body {
 
 /* Styling for Back button on sidemenu */
 .back {
-  background: red;
   position: absolute;
-  top: 0;
-  right: 50%; }
+  left: 0; }

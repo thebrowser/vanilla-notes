@@ -6,7 +6,7 @@
     <script type="text/javascript" src="scripts/bundle.js" defer></script>
     <title>Miniwiki Docs</title>
   </head>
-  <body class="grid" data-color="#ffdd57">
+  <body class="grid" data-color="royalblue">
     <nav class="navbar">
       <header class="navbar__header">
         <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 74.13923972334896 60">
@@ -38,15 +38,15 @@
 
     <main class="main">
       <nav class="sidebar sidebar--is-visible-1">
-        <button data-section="back" class="back">Back</button>
         <ul class="sidebar__menu sidebar__menu--is-visible">
-          <!-- <button data-section="table-contents" class="sidebar__contents">Table of Contents</button> -->
+          <li class="sidebar__title"><button class="sidebar__title--text" data-section="table">Table of contents</button></li>
           <li class="sidebar__item"><button class="sidebar__link" data-section="html"       data-color="coral">HTML</button></li>
           <li class="sidebar__item"><button class="sidebar__link" data-section="css"        data-color="royalblue">CSS</button></li>
           <li class="sidebar__item"><button class="sidebar__link" data-section="javascript" data-color="hotpink">JavaScript</button></li>
           <li class="sidebar__item"><button class="sidebar__link" data-section="wordpress"  data-color="slateblue">Wordpress</button></li>
         </ul>
-        <ul id="sidebar__sections" class="sidebar__menu--template"></ul>
+        <ul id="sidebar__sections" class="sidebar__menu--template">
+        </ul>
         <ul id="sidebar__articles" class="sidebar__menu--template-article"></ul>
       </nav>
       <section class="doc">

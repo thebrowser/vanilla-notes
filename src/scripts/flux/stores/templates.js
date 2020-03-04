@@ -1,7 +1,8 @@
 class TemplateStore {
   constructor(){
     this.state = {
-      // cachedTemplates: JSON.parse(localStorage.getItem('cachedTemplates')) || {},
+      cachedTemplates: JSON.parse(localStorage.getItem('cachedTemplates')) || {},
+      data: {}
     }
 
     this.fetchData()
@@ -12,86 +13,94 @@ class TemplateStore {
     fetch('http://vanilla-notes.site/wp-json/vanilla/v1/metadata')
     .then(res => res.json())
     .then(data => this.setData(data))
-    .catch(err => console.log(err));
+    .catch(err => console.log(err)); // TODO: Error handling
   }
 
   events(){
-    // document.addEventListener('fetchTemplate', ({ detail }) => this.checkCachedTemplates(detail))
-    document.addEventListener('fetchTemplate', ({ detail }) => this.createTemplate(detail))
+    console.log(this.state)
+    document.addEventListener('fetchTemplate', ({ detail }) => this.checkCachedTemplates(detail))
   }
 
   checkCachedTemplates(section){
-    const cachedTemplate = this.state.cachedTemplates[section]
+    const cached = this.state.cachedTemplates[section]
 
-    if (cachedTemplate) {
-      document.dispatchEvent(new CustomEvent('deliverTemplate', { detail: cachedTemplate }))
-      return
+    if (cached) {
+      document.dispatchEvent(new CustomEvent('deliverTemplate', { detail: cached }))
+    } else {
+      this.createTemplate(section)
     }
-
-    this.createTemplate(section)
   }
 
   createTemplate(section){
-
     const newTemplate = {
       id: new Date().getTime().toString(),
       target: '',
       content: ''
     }
 
-    /* click happened on the first menu because it holds object, not arrays, which don't have a length property */
+    if (!this.state.data[section]) {        // There are no articles in this section yet
+      newTemplate.target = ['sidebar__sections', 'sidebar__articles']
 
-    if (!this.state.data[section].length){
-      const keys = Object.keys(this.state.data[section])
+      newTemplate.content = `
+        <li class="sidebar__title">
+         <button class="sidebar__title--text" data-section="back">Oops... section is emtpy</button>
+        </li>
+        <li class="sidebar__item">
+          <p>Funny 404 image here or something</p>
+          <button class="sidebar__link" data-section="reset">BACK</button>
+        </li>
+      `
 
-      if(!keys.length){
-        // TODO, no posts under this category so better create some sort of '404' template for this or something
-        console.log('Oops, looks like there are no posts under this category yet.')
-        return
-      }
+      this.emitUpdateEvent(newTemplate)
+      return
+    }
+
+    if (!this.state.data[section].length){                          // check if option is one of 'DOM', 'REST API', ...
+      const keys = Object.keys(this.state.data[section])            // retrieve all categories under that section
 
       newTemplate.target = 'sidebar__sections'
 
-      newTemplate.content = keys.map(item => (`
-        <li class="sidebar__item">
-          <button class="sidebar__link" data-section="${item}">${item}</button>
-        </li>`))
-      .join('')
+      newTemplate.content = `
+        <li class="sidebar__title">
+         <button class="sidebar__title--text" data-section="back">${section}</button>
+        </li>
+
+        ${keys.map(item => (`
+          <li class="sidebar__item">
+            <button class="sidebar__link" data-section="${item}">${item}</button>
+          </li>`))
+        .join('')}
+      `
     }
 
-    /* click happened on the second menu, then we need to render anchor tags */
-
-    if (this.state.data[section].length){
+    if (this.state.data[section].length){                           // check if option is one of 'html', 'css', etc...
       newTemplate.target = 'sidebar__articles'
 
-      newTemplate.content = this.state.data[section].map(item => (`
-        <li class="sidebar__item">
-          <a href="${item.permalink}" class="sidebar__link">${item.title}</button>
-        </li>`))
-      .join('')
+      newTemplate.content = `
+        <li class="sidebar__title">
+         <button class="sidebar__title--text" data-section="back">${section}</button>
+        </li>
+
+        ${this.state.data[section].map(item => (`
+          <li class="sidebar__item">
+            <a href="${item.permalink}" class="sidebar__link">${item.title}</button>
+          </li>`))
+        .join('')}
+      `
     }
 
     this.emitUpdateEvent(newTemplate)
-    // this.setState(newTemplate, section)
+    this.setCachedTemplates({ newTemplate, section })
   }
 
   setData(data){
-    this.state = {
-      ...this.state,
-      data
-    }
-    // console.log('done', this.state)
+    this.state.data = { ...this.state.data, ...data }
   }
 
-  setState(newState){
+  setCachedTemplates({ newTemplate, section }){
+    this.state.cachedTemplates = { ...this.state.cachedTemplates, [section]: newTemplate }
 
-    this.state = {
-      ...this.state,
-      newState
-      // cachedTemplates: { ...this.state.cachedTemplates, [section]: newTemplate }
-    }
-
-    // localStorage.setItem('cachedTemplates', JSON.stringify(this.state.cachedTemplates))
+    localStorage.setItem('cachedTemplates', JSON.stringify(this.state.cachedTemplates))
   }
 
   emitUpdateEvent(newTemplate){

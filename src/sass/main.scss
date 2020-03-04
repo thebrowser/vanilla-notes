@@ -116,7 +116,6 @@ body {
   width: 300%; // to fit the three menus in one row
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: minmax(min-content, 20rem);
 
   contain: content;
   transform: translateX(var(--sidemenu-position));
@@ -143,19 +142,19 @@ body {
   &__menu,
   &__menu--template,
   &__menu--template-article {
-    grid-row: 1;
 
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    text-align: center;
     list-style: none;
 
+    // text-align: right;
     // hide menu under document when sliding
     position: relative;
+    grid-row: 1;
     z-index: -10;
 
-    width: 80%;
+    // width: 80%;
     transition: opacity .1s ease;
   }
 
@@ -177,12 +176,11 @@ body {
   }
 
   &__item {
-    margin: 1rem 0;
+    margin: 1rem;
   }
 
   &__link {
     background: none;
-    width: 60%;
     border: none;
     font-family: inherit;
     font-size: inherit;
@@ -194,13 +192,44 @@ body {
       color: black;
     }
   }
+
+  &__title {
+    text-align: right;
+    padding-bottom: 1rem;
+    width: 80%;
+    position: relative;
+
+    &::before {
+      content: '';
+      height: 2px;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background-color: var(--color-secondary);
+      opacity: .2;
+    }
+  }
+
+  &__title--text {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    color: #7a7a7a;
+    cursor: pointer;
+    text-transform: uppercase;
+
+    &:hover {
+      color: #333;
+    }
+  }
 }
 
 .doc {
   grid-column: 4 / 13;
 
   // this makes sure the document stays on top of the slide menu always
-  position: relative;
+  // position: relative;
   z-index: 10;
 }
 
@@ -379,8 +408,6 @@ body {
 /* Styling for Back button on sidemenu */
 
 .back {
-  background: red;
   position: absolute;
-  top: 0;
-  right: 50%;
+  left: 0;
 }

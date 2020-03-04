@@ -1,4 +1,4 @@
-import { updateColors, resetColors, updateNavbar, resetNavbar, slideMenuForward, slideMenuBack, fetchTemplate } from '../flux/actions/actions'
+import { updateColors, resetColors, updateNavbar, resetNavbar, slideMenuForward, slideMenuBack, resetSideMenu, fetchTemplate } from '../flux/actions/actions'
 
 class SideMenu {
   constructor(){
@@ -15,7 +15,8 @@ class SideMenu {
     const { color, section } = target.dataset
 
     if (!section) return
-    if (section === 'back') return slideMenuBack()
+    if (section === 'back')   return slideMenuBack()
+    if (section === 'reset')  return resetSideMenu()
 
     if (color) {
       updateColors(color)

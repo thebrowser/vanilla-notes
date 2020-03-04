@@ -25,6 +25,10 @@ export const slideMenuBack = () => {
   Dispatcher.dispatch({ type: actionTypes.SLIDE_BACK, payload: { position: -33 } })           // translateX sidebar by -33%
 }
 
+export const resetSideMenu = () => {
+  Dispatcher.dispatch({ type: actionTypes.RESET_MENU, payload: { position: -66 } })           // translateX sidebar to -66%
+}
+
 export const fetchTemplate = (section) => {
   Dispatcher.dispatch({ type: actionTypes.FETCH_TEMPLATE, payload: section })
 }
