@@ -32,3 +32,7 @@ export const resetSideMenu = () => {
 export const fetchTemplate = (section) => {
   Dispatcher.dispatch({ type: actionTypes.FETCH_TEMPLATE, payload: section })
 }
+
+export const showTableOfContents = () => {
+  Dispatcher.dispatch({ type: actionTypes.TABLE_CONTENTS })
+}

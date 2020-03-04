@@ -17,7 +17,6 @@ class TemplateStore {
   }
 
   events(){
-    console.log(this.state)
     document.addEventListener('fetchTemplate', ({ detail }) => this.checkCachedTemplates(detail))
   }
 
@@ -43,11 +42,10 @@ class TemplateStore {
 
       newTemplate.content = `
         <li class="sidebar__title">
-         <button class="sidebar__title--text" data-section="back">Oops... section is emtpy</button>
+         <button class="sidebar__title--text" data-section="reset">Oops... section is emtpy</button>
         </li>
         <li class="sidebar__item">
           <p>Funny 404 image here or something</p>
-          <button class="sidebar__link" data-section="reset">BACK</button>
         </li>
       `
 

@@ -20,6 +20,9 @@ p::selection, h1::selection, h2::selection, h3::selection {
   --color-secondary: #ffdd57;
   --navbar-slider-position: 0%; }
 
+html {
+  scroll-behavior: smooth; }
+
 body {
   background-color: #fdfdfd;
   overflow-x: hidden; }
@@ -76,6 +79,9 @@ body {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   padding: 2rem 0; }
+  @media only screen and (max-width: 900px) {
+    .main {
+      grid-template-columns: 1fr; } }
 
 .sidebar {
   grid-column: 1 / 4;
@@ -90,6 +96,9 @@ body {
   --submenu-1: 0;
   --submenu-2: 0;
   --submenu-3: 0; }
+  @media only screen and (max-width: 900px) {
+    .sidebar {
+      display: none; } }
   .sidebar--is-visible-1 {
     --submenu-1: 1; }
   .sidebar--is-visible-2 {

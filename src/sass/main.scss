@@ -25,6 +25,9 @@ p, h1, h2, h3 {
   --color-secondary: #ffdd57;
   --navbar-slider-position: 0%;
 }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   background-color: #fdfdfd;
@@ -107,6 +110,10 @@ body {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   padding: 2rem 0;
+
+  @media only screen and (max-width: 900px){
+    grid-template-columns: 1fr;
+  }
 }
 
 .sidebar {
@@ -125,6 +132,10 @@ body {
   --submenu-1: 0;
   --submenu-2: 0;
   --submenu-3: 0;
+
+  @media only screen and (max-width: 900px){
+    display: none;
+  }
 
   &--is-visible-1 {
     --submenu-1: 1;

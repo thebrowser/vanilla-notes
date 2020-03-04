@@ -6,6 +6,7 @@ import ColorStore from './flux/stores/colors'
 import NavbarStore from './flux/stores/navbar'
 import SideMenuStore from './flux/stores/sideMenu'
 import TemplateStore from './flux/stores/templates'
+import TableOfContentsStore from './flux/stores/tableOfContents'
 
 new Globals()
 new SideMenu()
@@ -15,3 +16,4 @@ new ColorStore()
 new NavbarStore()
 new SideMenuStore()
 new TemplateStore()
+new TableOfContentsStore()

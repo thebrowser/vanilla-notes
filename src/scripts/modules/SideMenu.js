@@ -1,4 +1,4 @@
-import { updateColors, resetColors, updateNavbar, resetNavbar, slideMenuForward, slideMenuBack, resetSideMenu, fetchTemplate } from '../flux/actions/actions'
+import { updateColors, resetColors, updateNavbar, resetNavbar, slideMenuForward, slideMenuBack, resetSideMenu, fetchTemplate, showTableOfContents } from '../flux/actions/actions'
 
 class SideMenu {
   constructor(){
@@ -17,6 +17,12 @@ class SideMenu {
     if (!section) return
     if (section === 'back')   return slideMenuBack()
     if (section === 'reset')  return resetSideMenu()
+
+    if (section === 'table') {
+      showTableOfContents()
+      slideMenuForward()
+      return
+    }
 
     if (color) {
       updateColors(color)

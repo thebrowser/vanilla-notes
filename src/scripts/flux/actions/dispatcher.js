@@ -21,6 +21,9 @@ class Dispatcher {
       case actionTypes.FETCH_TEMPLATE:
         document.dispatchEvent(new CustomEvent('fetchTemplate', { detail: action.payload }))
       break
+      case actionTypes.TABLE_CONTENTS:
+        document.dispatchEvent(new CustomEvent('showTableContents'))
+      break
       default:
       return
     }

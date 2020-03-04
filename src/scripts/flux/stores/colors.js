@@ -1,18 +1,17 @@
 class ColorStore {
   constructor(){
     this.baseColor = document.body.dataset.color
-    this.state = {
+    this.events()
+    this.setState({
       primary: this.baseColor,
       secondary: this.baseColor
-    }
-    this.events()
+    })
   }
 
   events(){
     document.addEventListener('newColors', ({ detail }) => this.setState(detail))
 
-    // timeout updates the theme color in sync with the navbar underline 
-    document.addEventListener('resetColors', () => {
+    document.addEventListener('resetColors', () => {        // timeout updates the theme color in sync with the navbar underline
       setTimeout(() => this.setState({
         primary: this.baseColor,
         secondary: this.baseColor
