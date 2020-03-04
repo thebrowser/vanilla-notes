@@ -6,9 +6,6 @@
     <script type="text/javascript" src="scripts/bundle.js" defer></script>
     <title>Miniwiki Docs</title>
   </head>
-  <template id="template__element">
-    <ul class="sidebar__menu--template" id="template__menu"></ul>
-  </template>
   <body class="grid" data-color="#ffdd57">
     <nav class="navbar">
       <header class="navbar__header">
@@ -41,9 +38,9 @@
 
     <main class="main">
       <nav class="sidebar sidebar--is-visible-1">
+        <button data-section="back" class="back">Back</button>
         <ul class="sidebar__menu sidebar__menu--is-visible">
-          <button data-section="table-contents" class="sidebar__contents">Table of Contents</button>
-          <!-- <li class="sidebar__item"><button class="sidebar__link table-contents" data-section="table-contents">Table of Contents</button></li> -->
+          <!-- <button data-section="table-contents" class="sidebar__contents">Table of Contents</button> -->
           <li class="sidebar__item"><button class="sidebar__link" data-section="html"       data-color="coral">HTML</button></li>
           <li class="sidebar__item"><button class="sidebar__link" data-section="css"        data-color="royalblue">CSS</button></li>
           <li class="sidebar__item"><button class="sidebar__link" data-section="javascript" data-color="hotpink">JavaScript</button></li>

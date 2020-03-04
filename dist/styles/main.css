@@ -37,7 +37,7 @@ body {
   grid-column: 1 / 13;
   position: relative;
   background-color: #fafafa;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
   display: grid;
   grid-template-columns: 100px repeat(2, 1fr) 100px; }
   .navbar::before, .navbar::after {
@@ -79,6 +79,7 @@ body {
 
 .sidebar {
   grid-column: 1 / 4;
+  position: relative;
   width: 300%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -258,3 +259,10 @@ body {
 .footer {
   grid-column: 2 / 12;
   justify-self: center; }
+
+/* Styling for Back button on sidemenu */
+.back {
+  background: red;
+  position: absolute;
+  top: 0;
+  right: 50%; }

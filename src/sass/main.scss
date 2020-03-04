@@ -3,11 +3,10 @@
 */
 p, h1, h2, h3 {
   &::selection {
-    background-color: #ffeca4;
+    background-color: lighten(#ffdd57, 15);
     color: inherit;
   }
 }
-
 
 .code::selection {
   background-color: whitesmoke;
@@ -47,7 +46,7 @@ body {
   grid-column: 1 / 13;
   position: relative;
   background-color: #fafafa;
-  box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  box-shadow: 0 3px 6px rgba(0,0,0,.1);
 
   display: grid;
   grid-template-columns: 100px repeat(2, 1fr) 100px;
@@ -112,6 +111,7 @@ body {
 
 .sidebar {
   grid-column: 1 / 4;
+  position: relative;
 
   width: 300%; // to fit the three menus in one row
   display: grid;
@@ -373,4 +373,14 @@ body {
 .footer {
   grid-column: 2 / 12;
   justify-self: center;
+}
+
+
+/* Styling for Back button on sidemenu */
+
+.back {
+  background: red;
+  position: absolute;
+  top: 0;
+  right: 50%;
 }

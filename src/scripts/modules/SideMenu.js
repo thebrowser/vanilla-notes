@@ -14,27 +14,19 @@ class SideMenu {
   updateMenu(target){
     const { color, section } = target.dataset
 
-    if (!section) return          // 1. user clicked elsewhere in the menu
+    if (!section) return
+    if (section === 'back') return slideMenuBack()
 
-    if (section === 'back'){      // 2. user clicked on the back button
-      this.backMenu()
-      return
-    }
-
-    if (color) {                  // 3. only the first menu updates color theme
+    if (color) {
       updateColors(color)
       updateNavbar()
     }
 
     slideMenuForward()
-    fetchTemplate(section)        // 4. this action eventually triggers the event listener above "sideMenuUpdated"
+    fetchTemplate(section)
   }
 
-  backMenu(){
-    slideMenuBack()
-  }
-
-  updateSidebar({ position }){    // 5. updates the DOM
+  updateSidebar({ position }){
 
     switch (position) {
       case 0:
