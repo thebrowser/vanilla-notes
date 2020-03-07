@@ -6,7 +6,7 @@
     <script type="text/javascript" src="scripts/bundle.js" defer></script>
     <title>Miniwiki Docs</title>
   </head>
-  <body class="grid" data-color="yellowgreen">
+  <body class="grid" data-color="cornflowerblue">
     <nav class="navbar">
       <header class="navbar__header">
         <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 74.13923972334896 60">
@@ -24,15 +24,16 @@
           <li class="navbar__item"><a class="navbar__link" href="#">About</a></li>
         </ul>
       </header>
-      <form class="form">
-        <label class="form__label" for="search-field">Search Field</label>
-        <input class="form__input" id="search-field" name="search-field" type="text">
-        <button class="form__input--reset" type="reset" name="button">X</button>
-        <button class="form__submit-btn" type="submit" name="button">
-          <svg class="form__icon">
+      <form class="search">
+        <label class="search__label" for="search-field">Search Field</label>
+        <input class="search__input" id="search-field" name="search-field" type="text" placeholder="Looking for something?">
+        <button class="search__input--reset" type="reset" name="button">X</button>
+        <button class="search__submit-btn" type="submit" name="button">
+          <svg class="search__icon">
             <use xlink:href="img/sprite.svg#icon-magnifying-glass"></use>
           </svg>
         </button>
+        <ul class="search__results"></ul>
       </form>
     </nav>
 

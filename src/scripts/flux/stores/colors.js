@@ -1,11 +1,11 @@
 class ColorStore {
   constructor(){
     this.baseColor = document.body.dataset.color
-    this.events()
     this.setState({
       primary: this.baseColor,
       secondary: this.baseColor
     })
+    this.events()
   }
 
   events(){

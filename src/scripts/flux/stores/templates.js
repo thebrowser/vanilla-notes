@@ -1,10 +1,11 @@
 class TemplateStore {
   constructor(){
+
     this.state = {
       cachedTemplates: JSON.parse(localStorage.getItem('cachedTemplates')) || {},
       data: {}
     }
-
+    
     this.fetchData()
     this.events()
   }
@@ -93,6 +94,10 @@ class TemplateStore {
 
   setData(data){
     this.state.data = { ...this.state.data, ...data }
+  }
+
+  getData(){
+    return this.state.data
   }
 
   setCachedTemplates({ newTemplate, section }){
