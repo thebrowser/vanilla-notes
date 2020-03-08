@@ -2,12 +2,12 @@ import { updateColors, resetColors, updateNavbar, resetNavbar, slideMenuForward,
 
 class SideMenu {
   constructor(){
-    this.sideBar = document.querySelector('.sidebar')
+    this.sideMenu = document.querySelector('.sidebar')
     this.events()
   }
 
   events(){
-    this.sideBar.addEventListener('click', ({ target }) => this.updateMenu(target))
+    this.sideMenu.addEventListener('click', ({ target }) => this.updateMenu(target))
     document.addEventListener('sideMenuUpdated', ({ detail }) => this.updateSidebar(detail))
   }
 
@@ -37,13 +37,13 @@ class SideMenu {
 
     switch (position) {
       case 0:
-        this.sideBar.className = 'sidebar sidebar--is-visible-3'
+        this.sideMenu.className = 'sidebar sidebar--is-visible-3'
       break;
       case -33:
-        this.sideBar.className = 'sidebar sidebar--is-visible-2'
+        this.sideMenu.className = 'sidebar sidebar--is-visible-2'
       break;
       case -66:
-        this.sideBar.className = 'sidebar sidebar--is-visible-1'
+        this.sideMenu.className = 'sidebar sidebar--is-visible-1'
         resetNavbar()
         resetColors()
       break;
@@ -51,7 +51,7 @@ class SideMenu {
       return
     }
 
-    this.sideBar.style.setProperty('--sidemenu-position', `${position}%`)
+    this.sideMenu.style.setProperty('--sidemenu-position', `${position}%`)
   }
 }
 

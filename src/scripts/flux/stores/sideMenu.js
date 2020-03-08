@@ -1,9 +1,8 @@
 class SideMenuStore {
   constructor(){
     this.state = {
-      position: -66
+      position: -33
     }
-
     this.events()
   }
 

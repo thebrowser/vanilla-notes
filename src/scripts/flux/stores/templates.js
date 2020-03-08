@@ -5,7 +5,7 @@ class TemplateStore {
       cachedTemplates: JSON.parse(localStorage.getItem('cachedTemplates')) || {},
       data: {}
     }
-    
+
     this.fetchData()
     this.events()
   }

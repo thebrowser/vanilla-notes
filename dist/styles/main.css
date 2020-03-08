@@ -92,7 +92,7 @@ body {
   contain: content;
   transform: translateX(var(--sidemenu-position));
   transition: transform .2s ease-in-out;
-  --sidemenu-position: -66%;
+  --sidemenu-position: -33%;
   --submenu-1: 0;
   --submenu-2: 0;
   --submenu-3: 0; }

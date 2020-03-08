@@ -1,12 +1,13 @@
 class TableOfContentsStore {
   constructor(){
     this.headings = []
+    this.calculateNodes()
     this.events()
   }
 
   events(){
-    this.calculateNodes()
     document.addEventListener('showTableContents', () => this.generateTemplate())
+    this.generateTemplate()
   }
 
   calculateNodes(){
@@ -32,7 +33,7 @@ class TableOfContentsStore {
     }
 
     newTemplate.content = `
-    <li class="sidebar__title"><button class="sidebar__title--text" data-section="back">Back</button></li>
+    <li class="sidebar__title"><button class="sidebar__title--text" data-section="back">Sections &#8594;</button></li>
     ${this.headings.map(heading => (`
       <li class="sidebar__item">
         <a href="/#${heading.id}" class="sidebar__link">${heading.textContent}</button>
