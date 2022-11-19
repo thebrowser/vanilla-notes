@@ -22,7 +22,7 @@
     "live-server": "^1.2.1",
     "node-sass": "^4.13.1",
     "webpack": "^4.41.6",
-    "webpack-cli": "^3.3.11",
+    "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.10.3"
   }
 }
